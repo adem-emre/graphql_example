@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:graphql_example/screens/rocket_detail.dart';
+import 'package:graphql_example/router/router.gr.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 String readRockets = """
@@ -44,7 +45,7 @@ class HomeView extends StatelessWidget {
         title:Text(rocketList[index]["name"] ),
         subtitle: Text(rocketList[index]["description"]),
         onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => RocketDetail(rocketId:rocketList[index]["id"] )));
+          context.router.push(RocketDetailRoute(rocketId: rocketList[index]["id"]));
         },
       );
     });
